@@ -4,7 +4,7 @@ import Form from './Form';
 
 class App extends Component {
     state = {
-        characters:  [ ]
+        characters: []
       }
 
       removeCharacter = index => {
@@ -17,7 +17,7 @@ class App extends Component {
         })
       }
 
-      handleSubmit = character => {
+      handleSubmit = (character) => {
           this.setState({ characters: [...this.state.characters, character]})
       }
 
