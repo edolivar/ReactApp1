@@ -16,7 +16,7 @@ class App extends Component {
           return (response);
         })
         .catch(function (error) {
-          console.log('axios err', error.response)
+          console.log(error)
           return error.response
          });
       }
@@ -31,9 +31,6 @@ class App extends Component {
                   return i !== index
                 }),
               })
-            }
-            else {
-              console.log("Failed")
             }
           })
       }
@@ -54,7 +51,6 @@ class App extends Component {
         this.makePostCall(character).then( callResult => {
            if (callResult.status === 201) {
               this.setState({ characters: [...this.state.characters, callResult.data] });
-              console.log(callResult.data)
            }
         });
       }
