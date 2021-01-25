@@ -9,15 +9,15 @@ class App extends Component {
       }
 
       makeDeleteCall(character){
-        console.log(character['id'])
-        return axios.delete(`http://localhost:5000/users/${character['id']}`)
+        console.log(character)
+        return axios.delete('http://localhost:5000/users', {data: character})
         .then(function (response) {
           console.log(response);
           return (response);
         })
         .catch(function (error) {
-          console.log(error)
-          return error.response
+          console.log('axios err', error.response)
+          return false
          });
       }
 
@@ -51,6 +51,7 @@ class App extends Component {
         this.makePostCall(character).then( callResult => {
            if (callResult.status === 201) {
               this.setState({ characters: [...this.state.characters, callResult.data] });
+              console.log(callResult.data)
            }
         });
       }
