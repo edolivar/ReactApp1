@@ -9,15 +9,14 @@ class App extends Component {
       }
 
       makeDeleteCall(character){
-        console.log(character)
-        return axios.delete('http://localhost:5000/users', {data: character})
+        return axios.delete(`http://localhost:5000/users/${character['_id']}`)
         .then(function (response) {
           console.log(response);
           return (response);
         })
         .catch(function (error) {
-          console.log('axios err', error.response)
-          return false
+          console.log(error)
+          return error.response
          });
       }
 
